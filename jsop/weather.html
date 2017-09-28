@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>weather</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+
+	function fn1(data){
+		// console.log(data.resultcode);
+		var a=data.resultcode;
+		var oDiv = document.getElementById('div1');
+		if (a==200) {
+			oDiv.innerHTML=data.result.today.date_y+'<br>'+data.result.today.weather;
+		}else{alert('查询不到该城市的信息')}
+		
+	}
+
+	
+	window.onload = function(){
+		var oBtn = document.getElementById('button');
+		var oVal = document.getElementById('val');
+		
+		oBtn.onclick = function(){
+			
+			var oScript = document.createElement('script');
+			oScript.src = 'http://v.juhe.cn/weather/index?format=2&cityname='+oVal.value+'&key=6d349b6b680f9d2dee3432a21e8e20af&callback=fn1';
+			document.body.appendChild(oScript);
+		}
+	}
+</script>
+</head>
+<body>
+	
+		<label>请输入城市：</label>
+		<input type="text" name="" id="val">
+		<button id="button">查询</button>
+	
+	<div id="div1"></div>
+</body>
+</html>

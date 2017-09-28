@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#q {width: 300px; height: 30px; padding: 5px; border:1px solid #f90; font-size: 16px;}
+#ul1 {border:1px solid #f90; width: 310px; margin: 0;padding: 0; display: none;}
+li a { line-height: 30px; padding: 5px; text-decoration: none; color: black; display: block;}
+li a:hover{ background: #f90; color: white; }
+</style>
+<script type="text/javascript">
+	function fn1(data){
+		// console.log(data.s)
+		var oUl = document.getElementById('ul1');
+		var html = '';
+		for (var i = 0; i < data.s.length; i++) {
+
+			// oUl.innerHTML += data.s[i]
+			html+= '<li>'+data.s[i]+'</li>';
+		}
+		oUl.innerHTML = html;
+		oUl.style.display = 'block';
+	}
+</script>
+
+
+<script type="text/javascript">
+	window.onload = function() {
+	
+	var oQ = document.getElementById('q');
+	var oUl = document.getElementById('ul1');
+	
+	oQ.onkeyup = function() {
+		
+		if ( this.value != '' ) {
+			var oScript = document.createElement('script');
+			oScript.src = 'http://suggestion.baidu.com/su?wd='+this.value+'&cb=fn1';
+			document.body.appendChild(oScript);
+		} else {
+			oUl.style.display = 'none';
+		}
+		
+	}
+	
+}
+</script>
+
+</head>
+
+<body>
+	<input type="text" id="q" />
+	<ul id="ul1"></ul>
+</body>
+</html>

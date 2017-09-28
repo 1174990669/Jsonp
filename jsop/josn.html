@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>josn</title>
+	<style>
+		
+	</style>
+	<script>
+		function fn1(data){
+			// console.log(data.result.Object)
+		// var a=data.resultcode;
+		var oDiv = document.getElementById('div1');
+				oDiv.innerHTML=data.result.today.date_y+'<br>'+data.result.today.weather;
+		}
+
+	window.onload=function(){
+		var oBut=document.getElementById('in1');
+		var oIn=document.getElementById('input2');
+
+		oBut.onclick=function(){
+			// if ( this.value !="") {
+				var oScript=document.createElement('script');
+				oScript.src='http://v.juhe.cn/weather/index?format=2&cityname='+oIn.value+'&key=734ff21690843d2424c9843a11c5a66c&callback=fn1';
+				document.body.appendChild(oScript);
+				// alert(1)
+				console.log(oScript)
+			 // } 
+
+		// 	if ( this.value != '' ) {
+		// 	var oScript = document.createElement('script');
+		// 	oScript.src = 'http://apis.juhe.cn/mobile/get?phone='+oVal.value+'&key=d8d203b21ec8258535b8f36069dd23ca&callback=fn1';
+		// 	document.body.appendChild(oScript);
+		// } else {
+		// 	oUl.style.display = 'none';
+		// }
+		}
+	}
+
+
+	</script>
+</head>
+<body>
+	
+	<input type="button" id="in1" value="查询">
+	<input type="text" id="input2" value=''>
+	<div id="div1"></div>
+</body>
+</html>
